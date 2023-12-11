@@ -1,4 +1,4 @@
-# Alpha SMS PHP Example
+# SMS.NET.BD SMS Integration with PHP Example
 
 This PHP example demonstrates how to send SMS messages using the Alpha SMS API in a PHP application. The provided `AlphaSMS` class simplifies the process of interacting with the Alpha SMS API.
 
