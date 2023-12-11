@@ -1,7 +1,7 @@
 <?php
 
-require_once "AlphaSMS.class.php";
-$sms = new AlphaSMS("your_api_key_here");
+require_once "SMSNETBD.class.php";
+$sms = new SMSNETBD("your_api_key_here");
 
 $balanceReq = $sms->getBalance();
 $balanceReq = $balanceReq["data"];
