@@ -1,6 +1,6 @@
 <?php
 
-class AlphaSMS
+class SMSNETBD
 {
     private $apiUrl = 'https://api.sms.net.bd';
     private $apiKey;
