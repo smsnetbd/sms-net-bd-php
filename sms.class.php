@@ -45,19 +45,19 @@ class sms_net_bd
             'sender_id' => $senderId,
         ];
 
-        $currentDate = new \DateTime('now', new \DateTimeZone('Asia/Dhaka'));
+        $timezone = new \DateTimeZone('Asia/Dhaka');
+        $currentDate = new \DateTime('now', $timezone);
 
-        $scheduleTime = strtotime(
-            $schedule,
-            $currentDate->getTimestamp()
-        );
+        $scheduleTime = strtotime($schedule, $currentDate->getTimestamp());
 
-        // check the timestamp is before the current time
-        if ($scheduleTime < time()) {
+        // get the current time in the 'Asia/Dhaka' timezone
+        $currentTime = (new \DateTime('now', $timezone))->getTimestamp();
+
+        if ($scheduleTime < $currentTime) {
             throw new \Exception('Schedule time must be in the future');
         }
 
-        $params['schedule'] = date('Y-m-d H:i:s', $scheduleTime); // in YYYY-MM-DD HH:MM:SS format
+        $params['schedule'] = date('Y-m-d H:i:s', $scheduleTime); // in YYYY-MM-DD HH:MM:SS format for Asia/Dhaka timezone
 
         return $this->makeRequest('POST', $url, $params);
     }
